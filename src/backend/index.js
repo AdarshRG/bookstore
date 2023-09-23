@@ -2,7 +2,7 @@
 const express=require("express")
 const mongoose=require('mongoose')
 const cors = require("cors");
-const { Book } = require("./models/bookmodel")
+// const { Book } = require("./models/bookmodel")
 // const router = require("./routes/bookRoutes");
 const bookRoutes = require("./routes/bookRoutes"); 
 const app=express()
@@ -10,8 +10,8 @@ const port=5000
 app.use(                                         //connects to frontend..best way or use app.use(cors())
     cors({
         orgin:"http://localhost:3000",
-        methods:["GET","POST","PUT","DELETE"],
-        allowedHeaders:["Content-Type"]
+        // methods:["GET","POST","PUT","DELETE"],
+        // allowedHeaders:["Content-Type"]
     })
 )
 
