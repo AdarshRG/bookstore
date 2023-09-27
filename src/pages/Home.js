@@ -12,8 +12,8 @@ const Home = () => {
   useEffect(() => {
     axios
       .get('http://localhost:5000/books')
-      .then((response) => {
-        setBooks(response.data.data);
+      .then((res) => {
+        setBooks(res.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -25,13 +25,12 @@ const Home = () => {
       <div className='flex justify-between items-center'>
         <h1 className='fw-bold'>Books List</h1>
         <Link to='/books/create'>
-        <MdOutlineAddBox className='text-sky-800 text-4xl' />
-        </Link>
+        <MdOutlineAddBox className='text-sky-800 text-6xl' />        </Link>
       </div>
-        <table className='w-100 border-collapse border'>
-          <thead>
+      <table className='w-100' style={{ border: '2px solid #000' }}>
+          <thead style={{ border: '2px solid #000' }}>
             <tr>
-              <th className='border border-slate-600 rounded-md p-2'>No</th>
+              <th className='border border-slate-600 rounded-md p-2 '>No</th>
               <th className='border border-slate-600 rounded-md p-2'>Title</th>
               <th className='border border-slate-600 rounded-md p-2'>Author</th>
               <th className='border border-slate-600 rounded-md p-2'>Publish Year</th>

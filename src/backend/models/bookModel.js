@@ -16,7 +16,7 @@ const bookSchema=mongoose.Schema(
                 },
     },
     {
-        timetamps:true,
+        timestamps:true,
     }
 )
 

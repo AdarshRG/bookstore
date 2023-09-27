@@ -8,8 +8,8 @@ router.post("/books",async (req,res)=>{
         if(
             !req.body.title||!req.body.author||!req.body.publishYear        //if all these present allenki error will send
         ){
-            res.send({
-                message:"send all req field"
+           return res.status(400).send({
+                 message:"send all req field",
             })
         }
         const newBook={
@@ -18,19 +18,20 @@ router.post("/books",async (req,res)=>{
             publishYear:req.body.publishYear,
         }
     const book=await Book.create(newBook)
-    return res.send(book)
+    return res.status(201).send(book) ;                  //updated data will send as response to frontend     
     
     } catch (error) {
-        res.send({message:error.message})
+        console.log(error.message);
+        res.status(500).send({message:error.message})
     }
     })
 
 
-    //Route for Get Al books from database
+    //Route for Get All books from database
     router.get("/books",async(req,res)=>{
         try {
             const books=await Book.find({})
-            return res.json(
+            return res.json(  
                { count:books.length,
                  data:books
                })

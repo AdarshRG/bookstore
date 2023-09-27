@@ -2,22 +2,25 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/BackButton';
+
 const ShowBook = () => {
   const [book, setBook] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/books/${id}`).then((response) => 
-    { setBook(response.data);
+    axios.get(`http://localhost:5000/books/${id}`)
+    .then((res) => 
+    { setBook(res.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-  function isValidDate(dateString) {
-    const dateObject = new Date(dateString);
-    return !isNaN(dateObject.getTime());
-  }
+
+  // function isValidDate(dateString) {
+  //   const dateObject = new Date(dateString);
+  //   return !isNaN(dateObject.getTime());
+  // }
 
   return (
     <div className='p-4'>
